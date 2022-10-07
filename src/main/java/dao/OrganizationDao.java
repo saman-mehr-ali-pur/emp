@@ -116,7 +116,23 @@ public class OrganizationDao {
             preparedStatement.setString(1,organization.getCreatedDate().toString());
             preparedStatement.setString(2,organization.getName());
             preparedStatement.setString(3,organization.getCode());
-            
+
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void deleteOraganization(Organization oraOrganization){
+        Connection connection=null;
+        try {
+            connection=DatabaseConnection.getInstance();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_Oganizition);
+            preparedStatement.setInt(1,oraOrganization.getId());
+
+
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
