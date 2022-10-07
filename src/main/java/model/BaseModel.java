@@ -6,6 +6,9 @@ public abstract class BaseModel {
     private int id;
     private ZonedDateTime createdDate;
 
+    public BaseModel(int id){
+        this.id=id;
+    }
     public BaseModel() {
         setCreatedDate(ZonedDateTime.now());
     }

@@ -11,6 +11,12 @@ public class UserOrganization extends BaseModel {
         this.registerDate = ZonedDateTime.now();
     }
 
+    public UserOrganization(User user, Organization organization, ZonedDateTime registerDate) {
+        this.user = user;
+        this.organization = organization;
+        this.registerDate = registerDate;
+    }
+
     public User getUser() {
         return user;
     }

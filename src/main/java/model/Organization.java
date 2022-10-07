@@ -4,6 +4,10 @@ public class Organization extends BaseModel {
     private String name;
     private String code;
 
+    public Organization(int id) {
+        super(id);
+    }
+
     public String getName() {
         return name;
     }

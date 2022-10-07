@@ -8,6 +8,10 @@ public class User extends BaseModel {
     private String email;
     private UserType userType;
 
+    public User(){}
+    public User(int id){
+        super(id);
+    }
     public UserType getUserType() {
         return userType;
     }
