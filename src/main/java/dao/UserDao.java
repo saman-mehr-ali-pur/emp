@@ -148,7 +148,7 @@ public class UserDao {
             int result = preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();
-            
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

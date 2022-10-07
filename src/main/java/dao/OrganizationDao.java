@@ -18,8 +18,9 @@ public class OrganizationDao {
     private static final String INSERT_QUERY = " insert into organization(createddate, name, code)values (?, ?, ?)";
     private static final String FIND_BY_ID = "select * from organization where id =?;";
     private static final String FIND_ALL = "select * from organization;";
-
-
+    private static final String DELETE_Oganizition = "delete from organization where id=?";
+    private static final String UPDATE_Oganiziton = "update organization set " +
+            "createdDate=?,name=?,code=?";
 
 
     public void create(Organization organization) {
@@ -104,5 +105,23 @@ public class OrganizationDao {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+    public void updateOganizatoin(Organization organization){
+        Connection connection=null;
+        try {
+            connection=DatabaseConnection.getInstance();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_Oganiziton);
+            preparedStatement.setString(1,organization.getCreatedDate().toString());
+            preparedStatement.setString(2,organization.getName());
+            preparedStatement.setString(3,organization.getCode());
+            
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
